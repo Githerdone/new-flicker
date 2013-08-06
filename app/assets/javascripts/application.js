@@ -14,21 +14,19 @@
 //= require jquery_ujs
 //= require_tree .
 
-$(document).ready(function() {  
+$(document).ready(function() {
 
   $('#login_li').on('click', function(){
-    // reset_login();
-    console.log('logging in here now');
+    reset_login();
     $("#loginModal").modal('show');
 
    $('#login').on('submit', function(event){
-   	console.log('perhaps I am here?');
     event.preventDefault();
 
     var form_input = $(this).serializeArray();
 
     $.post('/login', form_input).done(function(response){
-      if (response.user == false){
+      if (response.user == false) {
         unverified_user();
         setTimeout(function(){reset_login()}, 1500);
       }else{

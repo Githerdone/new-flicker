@@ -1,8 +1,8 @@
 module UsersHelper
 
 	def current_user
-		nil
-		# User.find_by_id(session[:id])
+
+		User.find_by_id(session[:id])
 	end
 
 	def logged_in?
@@ -10,7 +10,7 @@ module UsersHelper
 	end
 
 	def user
-		session[:email]
+		User.find_by_id(session[:id]).email
 	end
 
 	def img(name)

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :albums
+  attr_accessible :email, :password_hash, :password
   
   # include BCrypt
   

@@ -1,21 +1,31 @@
  <div id='createModal' style='display: none' class="modal hide fade">
-    <div class="modal-header">
-      <h3>Create New User</h3>
-    </div>
-    <div class="modal-body">
-      <%= form_for @user, :html => { :id => 'create_button' }, :remote => true do |f| %>
-      <%= f.label :email %>
-      <%= f.text_field :email, id: 'email', placeholder: 'email' %>
-      <%= f.label :password %>
-      <%= f.password_field :password, id: 'password', placeholder: 'create password' %>
-      <%= f.label :password_confirmation, 'Confirmation' %>
-      <%= f.password_field :password, id: 'verify_password', placeholder: 'verify password' %>
-      </div>
-      <div class="modal-footer">
-      <%= f.submit 'Login', class: "btn btn-block btn-inverse" %>
-      </div>
+  <div class="modal-header">
+    <h3>Create New User</h3>
+  </div>
+  <div class="modal-body">
+
+    <%= form_for @user do |f| %>
+      
+      <%= f.label :email do %>
+        email <span></span>
       <%end%>
-   </div>
+      <%= f.text_field :email, id: 'email', placeholder: 'email' %>
+
+      <%= f.label :password do %>
+        password <span></span>
+      <%end%>
+      <%= f.password_field :password_hash, id: 'password', placeholder: 'create password' %>
+
+      <%= f.label :password_confirmation do %>
+        confirmation <span></span>
+      <%end%>
+      <%= f.password_field :password, id: 'verify_password', placeholder: 'verify password' %>
+    </div>
+    <div class="modal-footer">
+      <%= f.submit 'Login', class: "btn btn-block btn-inverse" %>
+  </div>
+    <%end%>
+</div>
 
   <!--     <form id='new_user' method='post' action='/new_user'>
         <fieldset>

@@ -1,23 +1,24 @@
 $(document).ready(function() {
 
-
-  
   $('#create_li').on('click', function(e){
     e.preventDefault();
-    console.log('hello jake')
-    // reset_create();
+    reset_create();
     $("#createModal").modal('show');
-
-    $('#create_button').on('submit', function(event){
-      console.log('here I am creating a user')
-      event.preventDefault();
-
+  });
+    $('#new_user').on('submit', function(e){
+      e.preventDefault();
 
       var form_input = $(this).serializeArray();
-      var validation = validate_input_data(form_input[0].value, form_input[1].value, form_input[2].value);
-
+      var validation = validate_input_data(form_input[2].value, form_input[3].value, form_input[4].value);
+      console.log(form_input);
+      console.log(validation);
       if (validation.email && validation.password && validation.verify){
-        $.post('/new_user', form_input);
+        form_input.pop();
+        console.log(form_input);
+        $.post('/users', form_input).done(function(response){
+          console.log('here');
+          console.log(response);
+        });
         reset_create();
         $("#createModal").modal('hide');
         location.reload();
@@ -33,30 +34,33 @@ $(document).ready(function() {
         }
       }
     });
-  });
+  
 });
 
 function validate_input_data(email, password, verify){
+  console.log(email)
+  console.log(password)
+  console.log(verify)
   var emailRegex = new RegExp(/^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i);
   var passwordlength = password.length >= 6;
   var verify_password = password == verify
   return { email: emailRegex.test(email), password: passwordlength, verify: verify_password}
-}
+};
 
 function render_error(item){
   if (item == 'email'){
-    $("[for=email] span").css('color', 'red').text(' - incorrect format');
+    $("[for=user_email] span").css('color', 'red').text(' - incorrect format');
   }
   if (item == 'password'){
-    $("[for=password] span").css('color', 'red').text(' - not long enough');
+    $("[for=user_password] span").css('color', 'red').text(' - not long enough');
   }
   if (item == 'verify'){
-    $("[for=verify_password] span").css('color', 'red').text(' - does not match');
+    $("[for=user_password_confirmation] span").css('color', 'red').text(' - does not match');
   }
-}
+};
 
 function reset_create(){
   $('#new_user label span').text('');
   $("#new_user")[0].reset();
   $('#email').focus();
-}
+};

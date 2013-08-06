@@ -2,17 +2,18 @@
 <html>
 <head>
   <title>Flickerjr</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= stylesheet_link_tag    "normalize", :media => "all" %>
-  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "bootstrap" %>
-  <%= javascript_include_tag "photos" %>
-  <%= javascript_include_tag "signup" %>
+  <% ['application', 'normalize', 'bootstrap'].each do |stylesheet| %>
+    <%= stylesheet_link_tag stylesheet, :media => 'all'%>
+  <%end%>
+  <% ['application', 'bootstrap', 'photos', 'signup'].each do |jsfile| %>
+    <%= javascript_include_tag jsfile %>
+  <%end%>
   <%= csrf_meta_tags %>
 </head>
+
 <%= render "create_user_form" %>
 <%= render "login_form" %>
+
 <div class="navbar navbar-inverse">
   <div class="navbar-inner">
     <%= link_to 'Flicker jr.', welcome_index_path, class: 'brand' %>
@@ -20,10 +21,7 @@
 
       <li class="active"><a href="/">Home</a></li>
       <% if current_user %>
-        <li><a href="/logout">logout</a></li>
-        <ul id='user_ul'>
-          <li id='user'>Logged in as: <span><%= user %></span></li>
-        </ul>
+        <li><%= link_to 'Logout', '/sessions/' + "#{current_user.id}", :method => :delete %></li>
       <% else %>
       <!-- <li><a id='create_li' href='#'role="button" data-toggle='modal'>newthing</a></li> -->
       <li><%= link_to 'Create Account', '#createModal', :id => 'create_li' %>
@@ -32,6 +30,11 @@
        <!--  <li><a id="create_li" href="#">Create Account</a></li> -->
       <%end%>
     </ul>
+    <% if current_user %>
+    <ul id='user_ul'>
+        <li id='user'>Logged in as: <span><%= user %></span></li>
+    </ul>
+    <%end%>
   </div>
 </div>
 <body>

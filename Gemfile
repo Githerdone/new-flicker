@@ -46,3 +46,4 @@ gem 'carrierwave'
 #   gem 'faker'
 #   gem 'rspec'
 # end
+gem "rspec-rails", :group => [:development, :test]
