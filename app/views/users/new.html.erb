@@ -1,0 +1,25 @@
+
+<div class='container'>
+<%= form_for(@user), id: 'login_user' :post do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= f.label :text %><br>
+    <%= f.text_area :text %>
+  </p>
+ 
+  <p>
+    <%= f.submit "Submit" %>
+  </p>
+<% end %>
+</div>
+
+<!-- <form name='login_user' method='post' action='/login'>
+  <input type='text' name='email' placeholder='e-mail'><br>
+  <input type='password' name='password' placeholder='password'><br>
+  <button>Submit</button>
+</form>
+ -->

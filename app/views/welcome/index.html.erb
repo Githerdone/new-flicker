@@ -1,0 +1,54 @@
+ <% if @photos %>
+ <div id="myCarousel" class="carousel slide">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <!-- Carousel items -->
+
+  <div class="carousel-inner">
+    <% @first_photo = @photos.shift %>
+
+    <div class="active item" style='margin-left:220px;'><%= img(@first_photo.file) %></div>
+    <% @photos.each do |photo| %>
+    <div class="item" style='margin-left:220px;'><%= img(photo.file) %></div>
+    <%end%>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+ <%end%>
+
+<header class='span9 hero-unit' id='header'>
+  <h1>Welcome to Flicker jr.</h1>
+</header>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2" id='left_col'>
+      <form id='album'>
+        <p>Add a new Album</p>
+        <input type='text' name='title' placeholder='title'>
+        <button id='add_album' class='btn btn-warning'>add album</button></form>
+      <% if !current_user.nil? %>
+      <% if current_user.albums %>
+      <ul id='album_list'>
+      <% current_user.albums.each do |album| %>
+        <div><li><%= album.title %>: <span hidden> <%= album.id %></span>
+        <span><%= album.photos.length %> - photos<span></li><button id='update_album' data-albumid='<%= album.id %>' class='btn btn-warning'>delete album</button><button id='update_album' data-albumid='<%= album.id %>' class='btn btn-success'>add photo</button></div>
+        <%end%>
+      </ul>
+      <%end%>
+      <%end%>
+    </div>
+    <div class="span10" id='right_col'>
+      <p>Upload Your images Here</p>
+      <form method='post' enctype='multipart/form-data'>
+        <input type='file' name='filename'>
+        <button class='btn btn-block btn-inverse'>Upload</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+html {
+  width: 90%;
+  position: relative;
+  left: 2%;
+  min-width: 900px;
+}
+
+#loginModal, #createModal {
+  width: 290px;
+  top: 100px;
+}
+
+.modal-header {
+  border-bottom: 2px solid #980000 !important;
+}
+
+#user {
+  color: white;
+  text-align: center;
+  margin-top: 11px;
+  margin-left: 33px;
+}
+
+#user_ul {
+  float: right;
+}
+
+#user span {
+  color: #CC66CC;
+}
+
+#album {
+  width: 240px;
+  height: 115px;
+  background-color: #585858;
+  border-radius: 6px;
+  padding-top: 9px;
+  color: white;
+  padding-left: 10px;
+  margin-left: 5px;
+}
+
+#album_list {
+  list-style-type: none;
+   text-indent: 10px;
+}
+
+#album_list li {
+  padding-bottom:6px;
+}
+
+#album_list div {
+  width: 200px;
+  height: 50px;
+  background-color: #585858;
+  border-radius: 6px;
+  padding-top: 9px;
+  color: white;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+}
+
+#album_list span {
+  color: #CC66CC;
+}
+
+#update_album {
+  margin-left: 21px;
+  font-size: 9px;
+  width: 67px;
+  height: 20px;
+  padding: 0px;
+}
+
+#header {
+  margin-left: 0px;
+  position: relative;
+  left: 4.5%;
+  margin-bottom: 15px;
+}
+
+#header h1 {
+  font-size: 52px;
+  height: 0px;
+  margin: -24px;
+  text-align: center;
+}
+
+#left_col {
+  background-color: rgba(136,136,136,.4);
+  border-radius: 6px;
+  width: 30%;
+  height: 800px;
+  display: inline-block;
+  padding-top: 5px;
+}
+
+#right_col {
+  background-color: rgba(136,136,136,.2);
+  border-radius: 6px;
+  display: inline-block;
+  width: 67%;
+  height: 800px;
+}

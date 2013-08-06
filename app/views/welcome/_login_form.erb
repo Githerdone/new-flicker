@@ -1,0 +1,19 @@
+<div id='loginModal' style='display: none' class="modal hide fade">
+  <div class="modal-header">
+    <h3>Existing User - Login</h3>
+  </div>
+  <div class="modal-body">
+    <form id='login' method='post' action='/login'>
+      <fieldset>
+        <label for='email'>e-mail<span></span></label>
+        <input id='email' type='email' name='email' placeholder='e-mail' required autofocus>
+        <label for='password'>Password<span></span></label>
+        <input id='password' type='password' name='password' placeholder='password' required>
+        <label id='radio' class="checkbox"><input type="checkbox" name='keep_logged'>Keep me logged in</label>
+        <span id='user_false'></span>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-block btn-inverse" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
